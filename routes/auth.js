@@ -112,7 +112,7 @@ router.post('/getuser', fetchuser, async (req, res) => {
          console.log(user)
          return res.status(400).json({ Error: "Please try to login with the correct credentials" });
       }
-      res.send(user);
+      res.status(200).json(user);
    } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");
