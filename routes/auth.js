@@ -105,15 +105,14 @@ router.post('/getuser', fetchuser, async (req, res) => {
    if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
    }
-
    try {
-      const userId = req.user._id;
+      const userId = req.user;
       let user = await User.findById(userId).select("-password")
-      res.send(user);
       if (!user) {
+         console.log(user)
          return res.status(400).json({ Error: "Please try to login with the correct credentials" });
-
       }
+      res.send(user);
    } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal Server Error");
