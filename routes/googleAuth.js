@@ -20,7 +20,7 @@ router.get("/login/failed", (req, res) => {
 	});
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/google", passport.authenticate("google", { scope: ["profile","email"] }));
 
 router.get(
 	"/google/callback",
