@@ -27,7 +27,7 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || "*",
+    origin: "https://i-world-connected.vercel.app" || "*",
     methods: "GET,POST,PUT,DELETE",
     Credential: true
 }))
@@ -36,7 +36,7 @@ app.use(cors({
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
 app.use('/api/contact', require('./routes/contact'));
-app.use("/auth", require('./routes/googleAuth'));
+app.use("/socialAuth", require('./routes/socialAuth'));
 
 
 app.listen(port, () => {
