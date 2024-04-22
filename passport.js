@@ -6,7 +6,8 @@ passport.use(
 		{
 			clientID: process.env.CLIENT_ID,
 			clientSecret: process.env.CLIENT_SECRET,
-			callbackURL: "/socialAuth/google/callback"
+			callbackURL: "/socialAuth/google/callback",
+			scope: ["profile", "email"],
 		},
 		function (accessToken, refreshToken, profile, callback) {
 			callback(null, profile);
