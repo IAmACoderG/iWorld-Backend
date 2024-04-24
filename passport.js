@@ -1,4 +1,5 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GithubStrategy = require("passport-github2").Strategy;
 const passport = require("passport");
 
 passport.use(
@@ -11,6 +12,19 @@ passport.use(
 		},
 		function (accessToken, refreshToken, profile, callback) {
 			callback(null, profile);
+		}
+	)
+);
+
+passport.use(
+	new GithubStrategy(
+		{
+			clientID: GITHUB_CLIENT_ID,
+			clientSecret: GITHUB_CLIENT_SECRET,
+			callbackURL: "/auth/github/callback",
+		},
+		function (accessToken, refreshToken, profile, done) {
+			done(null, profile);
 		}
 	)
 );
