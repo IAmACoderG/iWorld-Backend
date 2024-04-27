@@ -33,7 +33,7 @@ router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    successRedirect: CLIENT_URL,
+    successRedirect: process.env.CLIENT_URL,
     failureRedirect: "/login/failed",
   })
 );
